@@ -18,9 +18,14 @@ Install PostgreSQL and run:
 
 Run 3 servers:
 
-    cd compojure_app && lein run -m compojure_app.handler            # port 5000
-    cd compojure_app && lein ring server-headless                    # port 3000
-    cd rails_app && RAILS_ENV=production bundle exec rails s -p 3001 # port 3001
+    # port 5000
+    cd compojure_app && lein with-profile production trampoline run -m compojure_app.handler
+
+    # port 3000
+    cd compojure_app && lein with-profile production trampoline ring server-headless
+
+    # port 3001
+    cd rails_app && RAILS_ENV=production bundle exec rails s -p 3001
 
 Run benchmark script:
 
@@ -30,6 +35,6 @@ Results:
 
     Comparison:
 
-    Ruby on Rails:               19.3 i/s
-    Compojure - Http-kit server: 16.9 i/s - 1.14x slower
-    Compojure - Ring server:     15.3 i/s - 1.26x slower
+    Ruby on Rails:               17.4 i/s
+    Compojure - Http-kit server: 16.7 i/s - 1.04x slower
+    Compojure - Ring server:     16.5 i/s - 1.05x slower
