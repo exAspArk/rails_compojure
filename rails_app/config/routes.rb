@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :books, only: [:index, :create] do
     delete :all, on: :collection
+    get :dummy, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

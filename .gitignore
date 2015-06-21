@@ -1,0 +1,8 @@
+.bundle
+
+rails_app/log
+rails_app/tmp
+rails_app/db/schema.rb
+
+compojure_app/target
+
