@@ -54,9 +54,9 @@ Results after 5 iterations to warmup JIT Compilation of Clojure implementation:
 
 Run benchmark script for http-stack only:
 
-    ruby benchmark-http-stack.rb@gmail
+    ruby benchmark-http-stack.rb
 
-Results:
+Results after JIT Compilation:
 
     Comparison:
 
