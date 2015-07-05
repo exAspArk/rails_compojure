@@ -4,6 +4,10 @@
             [ring.util.response :as response]
             [compojure_app.models.queries :as queries]))
 
+(defn get-dummy [request]
+  {:status 20
+   :body "Ok"})
+
 (defn get-books-route [request]
   (queries/all-books))
 
@@ -21,6 +25,7 @@
   "Not Found")
 
 (defroutes app-routes
+  (GET    "/dummy"     [] get-dummy)
   (GET    "/books"     [] get-books-route)
   (POST   "/books"     [] post-book-route)
   (DELETE "/books/all" [] delete-books-route)

@@ -16,7 +16,10 @@ Install PostgreSQL and run:
 
 ## Running
 
-Run 3 servers:
+Run 4 servers:
+
+    # port 8000
+    cd compojure_app && lein with-profile production trampoline run -m compojure_app.handler aleph
 
     # port 5000
     cd compojure_app && lein with-profile production trampoline run -m compojure_app.handler
@@ -31,10 +34,37 @@ Run benchmark script:
 
     ruby benchmark.rb
 
-Results:
+Results of the first time run test:
 
     Comparison:
 
-    Ruby on Rails:               17.4 i/s
-    Compojure - Http-kit server: 16.7 i/s - 1.04x slower
-    Compojure - Ring server:     16.5 i/s - 1.05x slower
+    Compojure - Aleph server:       20.0 i/s
+    Compojure - Http-kit server:       19.9 i/s - 1.01x slower
+       Ruby on Rails:       19.8 i/s - 1.01x slower
+    Compojure - Ring-Jetty server:       19.2 i/s - 1.04x slower
+
+Results after 5 iterations to warmup JIT Compilation of Clojure implementation:
+
+    Comparison:
+
+    Compojure - Http-kit server:       24.7 i/s
+    Compojure - Aleph server:       23.2 i/s - 1.06x slower
+    Compojure - Ring-Jetty server:       23.1 i/s - 1.07x slower
+       Ruby on Rails:       19.3 i/s - 1.28x slower
+
+Run benchmark script for http-stack only:
+
+    ruby benchmark-http-stack.rb
+
+Results after JIT Compilation:
+
+    Comparison:
+
+    Compojure - Http-kit server:      102.8 i/s
+    Compojure - Ring-Jetty server:       97.5 i/s - 1.05x slower
+    Compojure - Aleph server:       96.4 i/s - 1.07x slower
+       Ruby On Rails:       66.4 i/s - 1.55x slower
+
+Hardware:
+
+    Intel Core i5 2450M 2.50 GHz, 16 Gb RAM, SSD

@@ -7,7 +7,7 @@ Benchmark.ips do |x|
     `curl http://localhost:3001/books`
   end
 
-  x.report "Compojure - Ring server" do
+  x.report "Compojure - Ring-Jetty server" do
     `curl -X DELETE http://localhost:3000/books/all`
     `curl -X POST -H "Content-Type: application/json" "http://localhost:3000/books?title=A&authors=B"`
     `curl http://localhost:3000/books`
@@ -17,6 +17,12 @@ Benchmark.ips do |x|
     `curl -X DELETE http://localhost:5000/books/all`
     `curl -X POST -H "Content-Type: application/json" "http://localhost:5000/books?title=A&authors=B"`
     `curl http://localhost:5000/books`
+  end
+
+  x.report "Compojure - Aleph server" do
+    `curl -X DELETE http://localhost:8000/books/all`
+    `curl -X POST -H "Content-Type: application/json" "http://localhost:8000/books?title=A&authors=B"`
+    `curl http://localhost:8000/books`
   end
 
   x.compare!

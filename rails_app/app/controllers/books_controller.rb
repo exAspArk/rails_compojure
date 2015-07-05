@@ -22,6 +22,10 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def dummy
+    render json: {}
+  end
+
 private
 
   # Never trust parameters from the scary internet, only allow the white list through.
