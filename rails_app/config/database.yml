@@ -6,7 +6,6 @@
 #
 default: &default
   username: postgres
-  password: 7u*I9o)P
   adapter: postgresql
   host: localhost
   pool: 5
